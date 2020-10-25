@@ -75,6 +75,15 @@ namespace Assignment4Group3
                 .ToList();
         }
 
+        public IList<Product> GetProductContainsSubstring(string prodName)
+        {
+            using var ctx = new DatabaseContext();
+            return ctx.Products
+                .FromSqlRaw($"select * from products where productname like \'%{prodName}%\'")
+                .Include(x => x.Category)
+                .ToList();
+        }
+
         public IList<Product> GetProductsByCategoryId(int id)
         {
             using var ctx = new DatabaseContext();

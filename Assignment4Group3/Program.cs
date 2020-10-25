@@ -32,7 +32,7 @@ namespace Assignment4Group3
                               $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
                               $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
                               $"ship name: {order.ShipName} \n" +
-                              $"ship city: {order.ShipCity} \n");
+                              $"ship city: {order.ShipCity}");
 
             //Console.WriteLine("======================================================");
 
@@ -73,18 +73,26 @@ namespace Assignment4Group3
             //                  $"price: {product[0].UnitPrice} " +
             //                  $"category: {product[0].Category.Name}");
 
+            //Product #7
+
+            var product = dataService.GetProductContainsSubstring("Ch");
+            foreach (var x in product)
+            {
+                Console.WriteLine($"Product: {x.Name}, Category: {x.Category.Name}");
+            }
+
             //Product #8
 
-            //Console.WriteLine("======================================================");
+            Console.WriteLine("======================================================");
 
-            //var product2 = dataService.GetProductsByCategoryId(1);
-            //foreach (var x in product2)
-            //{
-            //    Console.WriteLine($"ProductId: {x.Id}, " +
-            //                      $"name: {x.Name}, " +
-            //                      $"price: {x.UnitPrice}, " +
-            //                      $"category: {x.Category.Name}");
-            //}
+            var product2 = dataService.GetProductsByCategoryId(1);
+            foreach (var x in product2)
+            {
+                Console.WriteLine($"ProductId: {x.Id}, " +
+                                  $"name: {x.Name}, " +
+                                  $"price: {x.UnitPrice}, " +
+                                  $"category: {x.Category.Name}");
+            }
         }
     }
 }
