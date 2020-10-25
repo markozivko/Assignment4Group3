@@ -13,7 +13,13 @@ namespace Assignment4Group3
 
         public override string ToString()
         {
-            return $"Order id: {Id} shipping to: {ShipCity} on date: {DateOrder.Year}-{DateOrder.Month}-{DateOrder.Day}";
+            return $"Order id: {Id} " +
+                   $"on date: {DateOrder.Year}-{DateOrder.Month}-{DateOrder.Day}" +
+                   $"date shipped: {DateShipped.Year}-{DateShipped.Month}-{DateShipped.Day} " +
+                   $"date required: {DateRequired.Year}-{DateRequired.Month}-{DateRequired.Day} " +
+                   $"freight: {DateRequired.Year}-{DateRequired.Month}-{DateRequired.Day} " +
+                   $"ship name: {ShipName} " +
+                   $"ship city: {ShipCity} ";
         }
     }
 }

@@ -46,6 +46,7 @@ namespace Assignment4Group3
             //Order Details table
             modelBuilder.Entity<OrderDetail>().ToTable("orderdetails");
             modelBuilder.Entity<OrderDetail>().Property(x => x.OrderId).HasColumnName("orderid");
+            modelBuilder.Entity<OrderDetail>().Property(x => x.UnitPrice).HasColumnName("unitprice");
             modelBuilder.Entity<OrderDetail>().Property(x => x.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetail>().Property(x => x.Discount).HasColumnName("discount");
             modelBuilder.Entity<OrderDetail>().Property(x => x.ProductId).HasColumnName("productid");
