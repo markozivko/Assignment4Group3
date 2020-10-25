@@ -99,6 +99,15 @@ namespace Assignment4Group3
             Console.WriteLine("======================================================");
             var category = dataService.GetCategoryById(1);
             Console.WriteLine($"Category name: {category.Name}");
+
+            //Category 10
+            Console.WriteLine("======================================================");
+
+            var category2 = dataService.GetCategories();
+            foreach (var x in category2)
+            {
+                Console.WriteLine($"Id: {x.Id} Name: {x.Name} Description: {x.Description} ");
+            }
         }
     }
 }

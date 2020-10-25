@@ -99,5 +99,12 @@ namespace Assignment4Group3
             return ctx.Categories
                 .FromSqlRaw($"select * from categories where categoryid = {id}").FirstOrDefault();
         }
+
+        public IList<Category> GetCategories()
+        {
+            using var ctx = new DatabaseContext();
+            return ctx.Categories
+                .ToList();
+        }
     }
 }
