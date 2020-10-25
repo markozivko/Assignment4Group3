@@ -14,5 +14,13 @@ namespace Assignment4Group3
                 .Include(x => x.Category)
                 .ToList();
         }
+
+        public IList<OrderDetail> GetOrderDetails()
+        {
+            using var ctx = new DatabaseContext();
+            return ctx.OrderDetails
+                .Include(x => x.Product)
+                .ToList();
+        }
     }
 }
