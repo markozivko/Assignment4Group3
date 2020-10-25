@@ -11,23 +11,7 @@ namespace Assignment4Group3
             var dataService = new DataService();
 
             //Order #1
-            var order = dataService.GetOrderById(10500);
-            Console.WriteLine($"order id: {order.Id} \n" +
-                              $"order date: {order.DateOrder.Year}-{order.DateOrder.Month}-{order.DateOrder.Day}\n" +
-                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-                              $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
-                              $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
-                              $"ship name: {order.ShipName} \n" +
-                              $"ship city: {order.ShipCity} \n");
-
-            //Console.WriteLine("======================================================");
-
-
-            //Order #2
-
-            //not working
-            //for some reason does not won't to find SHIP NAME, probably error with "" in parsing 
-            //var order = dataService.GetOrderByShippingName("North/South");
+            //var order = dataService.GetOrderById(10500);
             //Console.WriteLine($"order id: {order.Id} \n" +
             //                  $"order date: {order.DateOrder.Year}-{order.DateOrder.Month}-{order.DateOrder.Day}\n" +
             //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
@@ -35,6 +19,20 @@ namespace Assignment4Group3
             //                  $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
             //                  $"ship name: {order.ShipName} \n" +
             //                  $"ship city: {order.ShipCity} \n");
+
+            Console.WriteLine("======================================================");
+
+
+            //Order #2
+
+            var order = dataService.GetOrderByShippingName("North/South");
+            Console.WriteLine($"order id: {order.Id} \n" +
+                              $"order date: {order.DateOrder.Year}-{order.DateOrder.Month}-{order.DateOrder.Day}\n" +
+                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+                              $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
+                              $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
+                              $"ship name: {order.ShipName} \n" +
+                              $"ship city: {order.ShipCity} \n");
 
             //Console.WriteLine("======================================================");
 
@@ -69,24 +67,24 @@ namespace Assignment4Group3
             //Product #6
             Console.WriteLine("======================================================");
 
-            var product = dataService.GetProductById(1);
-            Console.WriteLine($"ProductId: {product[0].Id} " +
-                              $" name: {product[0].Name} " +
-                              $"price: {product[0].UnitPrice} " +
-                              $"category: {product[0].Category.Name}");
+            //var product = dataService.GetProductById(1);
+            //Console.WriteLine($"ProductId: {product[0].Id} " +
+            //                  $" name: {product[0].Name} " +
+            //                  $"price: {product[0].UnitPrice} " +
+            //                  $"category: {product[0].Category.Name}");
 
             //Product #8
 
-            Console.WriteLine("======================================================");
+            //Console.WriteLine("======================================================");
 
-            var product2 = dataService.GetProductsByCategoryId(1);
-            foreach (var x in product2)
-            {
-                Console.WriteLine($"ProductId: {x.Id}, " +
-                                  $"name: {x.Name}, " +
-                                  $"price: {x.UnitPrice}, " +
-                                  $"category: {x.Category.Name}");
-            }
+            //var product2 = dataService.GetProductsByCategoryId(1);
+            //foreach (var x in product2)
+            //{
+            //    Console.WriteLine($"ProductId: {x.Id}, " +
+            //                      $"name: {x.Name}, " +
+            //                      $"price: {x.UnitPrice}, " +
+            //                      $"category: {x.Category.Name}");
+            //}
         }
     }
 }

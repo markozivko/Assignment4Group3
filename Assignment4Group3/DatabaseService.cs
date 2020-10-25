@@ -36,7 +36,7 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext();
             return ctx.Orders
-                .FromSqlRaw($"select * from orders where shipname = {shippingName}").FirstOrDefault();
+                .FromSqlRaw($"select * from orders where shipname like \'%{shippingName}\'").FirstOrDefault();
         }
 
         public IList<Order> GetOrders()
