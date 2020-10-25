@@ -6,7 +6,19 @@ namespace Assignment4Group3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            using var context = new DatabaseContext();
+            var dataService = new DataService();
+
+            foreach (var product in context.Products)
+            {
+                Console.WriteLine(product);
+            }
+
+            //foreach (var x in dataService.GetProducts())
+            //{
+            //    Console.WriteLine(x);
+            //}
         }
     }
 }
