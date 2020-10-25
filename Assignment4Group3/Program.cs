@@ -93,6 +93,12 @@ namespace Assignment4Group3
                                   $"price: {x.UnitPrice}, " +
                                   $"category: {x.Category.Name}");
             }
+
+            //Category #9
+            // we need to check what happens if ID does not exist
+            Console.WriteLine("======================================================");
+            var category = dataService.GetCategoryById(1);
+            Console.WriteLine($"Category name: {category.Name}");
         }
     }
 }

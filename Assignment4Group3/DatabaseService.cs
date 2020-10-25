@@ -92,5 +92,12 @@ namespace Assignment4Group3
                 .Include(x => x.Category)
                 .ToList();
         }
+
+        public Category GetCategoryById(int id)
+        {
+            using var ctx = new DatabaseContext();
+            return ctx.Categories
+                .FromSqlRaw($"select * from categories where categoryid = {id}").FirstOrDefault();
+        }
     }
 }
