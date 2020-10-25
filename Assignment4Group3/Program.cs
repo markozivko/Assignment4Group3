@@ -10,9 +10,9 @@ namespace Assignment4Group3
             using var context = new DatabaseContext();
             var dataService = new DataService();
 
-            foreach (var product in context.Products)
+            foreach (var orderd in context.OrderDetails)
             {
-                Console.WriteLine(product);
+                Console.WriteLine(orderd);
             }
 
             //foreach (var x in dataService.GetProducts())
