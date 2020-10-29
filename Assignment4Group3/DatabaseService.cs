@@ -65,7 +65,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<Product> GetProductById(int id)
+        public IList<Product> GetProduct(int id)
         {
             //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext();
@@ -93,7 +93,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public Category GetCategoryById(int id)
+        public Category GetCategory(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.Categories
