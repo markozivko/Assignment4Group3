@@ -15,7 +15,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<OrderDetail> GetOrderDetails()
+        public IList<OrderDetails> OrderDetails()
         {
             using var ctx = new DatabaseContext();
             return ctx.OrderDetails
@@ -46,7 +46,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<OrderDetail> GetOrderDetailsByOrderId(int id)
+        public IList<OrderDetails> GetOrderDetailsByOrderId(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.OrderDetails
@@ -56,7 +56,7 @@ namespace Assignment4Group3
                 
         }
 
-        public IList<OrderDetail> GetOrderDetailsByProductId(int id)
+        public IList<OrderDetails> GetOrderDetailsByProductId(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.OrderDetails
@@ -65,14 +65,15 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<Product> GetProduct(int id)
+        public Product GetProduct(int id)
         {
             //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext();
             return ctx.Products
-                .FromSqlRaw($"select * from products where productid = {id}")
-                .Include(x => x.Category)
-                .ToList();
+                .FromSqlRaw($"select * from products where productid = {id}").FirstOrDefault();
+                // I don't know how to include x.Category is I am returning single Product and not a list
+                //.Include(x => x.Category);
+
         }
 
         public IList<Product> GetProductByName(string prodName)

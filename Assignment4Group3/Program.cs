@@ -15,24 +15,24 @@ namespace Assignment4Group3
             //Console.WriteLine($"order id: {order.Id} \n" +
             //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
             //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-            //                  $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
-            //                  $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
+            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
             //                  $"ship name: {order.ShipName} \n" +
             //                  $"ship city: {order.ShipCity} \n");
 
-            Console.WriteLine("======================================================");
+            //Console.WriteLine("======================================================");
 
 
             //Order #2
 
-            var order = dataService.GetOrderByShippingName("North/South");
-            Console.WriteLine($"order id: {order.Id} \n" +
-                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
-                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-                              $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
-                              $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
-                              $"ship name: {order.ShipName} \n" +
-                              $"ship city: {order.ShipCity}");
+            //var order = dataService.GetOrderByShippingName("North/South");
+            //Console.WriteLine($"order id: {order.Id} \n" +
+            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
+            //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+            //                  $"ship name: {order.ShipName} \n" +
+            //                  $"ship city: {order.ShipCity}");
 
             //Console.WriteLine("======================================================");
 
@@ -67,47 +67,47 @@ namespace Assignment4Group3
             //Product #6
             Console.WriteLine("======================================================");
 
-            //var product = dataService.GetProductById(1);
-            //Console.WriteLine($"ProductId: {product[0].Id} " +
-            //                  $" name: {product[0].Name} " +
-            //                  $"price: {product[0].UnitPrice} " +
-            //                  $"category: {product[0].Category.Name}");
+            var product = dataService.GetProduct(1);
+            Console.WriteLine($"ProductId: {product.Id} " +
+                              $" name: {product.Name} " +
+                              $"price: {product.UnitPrice} ");
+                              //$"category: {product.Category.Name}");
 
             //Product #7
 
-            var product = dataService.GetProductByName("Ch");
-            foreach (var x in product)
-            {
-                Console.WriteLine($"Product: {x.Name}, Category: {x.Category.Name}");
-            }
+            //var product = dataService.GetProductByName("Ch");
+            //foreach (var x in product)
+            //{
+            //    Console.WriteLine($"Product: {x.Name}, Category: {x.Category.Name}");
+            //}
 
             //Product #8
 
-            Console.WriteLine("======================================================");
+            //Console.WriteLine("======================================================");
 
-            var product2 = dataService.GetProductByCategory(1);
-            foreach (var x in product2)
-            {
-                Console.WriteLine($"ProductId: {x.Id}, " +
-                                  $"name: {x.Name}, " +
-                                  $"price: {x.UnitPrice}, " +
-                                  $"category: {x.Category.Name}");
-            }
+            //var product2 = dataService.GetProductByCategory(1);
+            //foreach (var x in product2)
+            //{
+            //    Console.WriteLine($"ProductId: {x.Id}, " +
+            //                      $"name: {x.Name}, " +
+            //                      $"price: {x.UnitPrice}, " +
+            //                      $"category: {x.Category.Name}");
+            //}
 
             //Category #9
             // we need to check what happens if ID does not exist
-            Console.WriteLine("======================================================");
-            var category = dataService.GetCategory(1);
-            Console.WriteLine($"Category name: {category.Name}");
+            //Console.WriteLine("======================================================");
+            //var category = dataService.GetCategory(1);
+            //Console.WriteLine($"Category name: {category.Name}");
 
             //Category 10
-            Console.WriteLine("======================================================");
+            //Console.WriteLine("======================================================");
 
-            var category2 = dataService.GetCategories();
-            foreach (var x in category2)
-            {
-                Console.WriteLine($"Id: {x.Id} Name: {x.Name} Description: {x.Description} ");
-            }
+            //var category2 = dataService.GetCategories();
+            //foreach (var x in category2)
+            //{
+            //    Console.WriteLine($"Id: {x.Id} Name: {x.Name} Description: {x.Description} ");
+            //}
         }
     }
 }

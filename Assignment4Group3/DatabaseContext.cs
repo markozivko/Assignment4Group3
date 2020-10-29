@@ -8,11 +8,11 @@ namespace Assignment4Group3
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=root");
+            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=marko");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,12 +44,12 @@ namespace Assignment4Group3
             modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
 
             //Order Details table
-            modelBuilder.Entity<OrderDetail>().ToTable("orderdetails");
-            modelBuilder.Entity<OrderDetail>().Property(x => x.OrderId).HasColumnName("orderid");
-            modelBuilder.Entity<OrderDetail>().Property(x => x.UnitPrice).HasColumnName("unitprice");
-            modelBuilder.Entity<OrderDetail>().Property(x => x.Quantity).HasColumnName("quantity");
-            modelBuilder.Entity<OrderDetail>().Property(x => x.Discount).HasColumnName("discount");
-            modelBuilder.Entity<OrderDetail>().Property(x => x.ProductId).HasColumnName("productid");
+            modelBuilder.Entity<OrderDetails>().ToTable("orderdetails");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.OrderId).HasColumnName("orderid");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.UnitPrice).HasColumnName("unitprice");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.Quantity).HasColumnName("quantity");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.Discount).HasColumnName("discount");
+            modelBuilder.Entity<OrderDetails>().Property(x => x.ProductId).HasColumnName("productid");
 
         }
     }

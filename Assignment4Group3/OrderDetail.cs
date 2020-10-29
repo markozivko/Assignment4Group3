@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Assignment4Group3
 {
-    public class OrderDetail
+    public class OrderDetails
     {
         [Key]
         public int OrderId { get; set; }
@@ -12,10 +12,11 @@ namespace Assignment4Group3
         public int Discount { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; }
+        public Order Order { get; set; }
 
         public override string ToString()
         {
-            return $"Id: {OrderId}, quantity: {Quantity}, product: {Product.Name}";
+            return $"Id: {OrderId}, quantity: {Quantity}, product: {Product.Name}, {Order.Date}";
         }
     }
 }
