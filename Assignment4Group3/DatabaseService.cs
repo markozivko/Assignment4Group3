@@ -67,7 +67,6 @@ namespace Assignment4Group3
 
         public Product GetProduct(int id)
         {
-            //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext();
             return ctx.Products
                 .FromSqlRaw($"select * from products where productid = {id}").FirstOrDefault();

@@ -10,7 +10,7 @@ namespace Assignment4Group3
         public int Freight { get; set; }
         public string ShipName { get; set; }
         public string ShipCity { get; set; }
-        public OrderDetails[] OrderDetails { get; set; }
+        //public OrderDetails[] OrderDetails { get; set; }
 
         public override string ToString()
         {
@@ -21,6 +21,7 @@ namespace Assignment4Group3
                    $"freight: {Required.Year}-{Required.Month}-{Required.Day} " +
                    $"ship name: {ShipName} " +
                    $"ship city: {ShipCity} ";
+                   //order details: {OrderDetails[0].OrderId}";
         }
     }
 }
