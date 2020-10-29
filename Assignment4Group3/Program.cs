@@ -11,9 +11,9 @@ namespace Assignment4Group3
             var dataService = new DataService();
 
             //Order #1
-            //var order = dataService.GetOrderById(10500);
+            //var order = dataService.GetOrder(10500);
             //Console.WriteLine($"order id: {order.Id} \n" +
-            //                  $"order date: {order.DateOrder.Year}-{order.DateOrder.Month}-{order.DateOrder.Day}\n" +
+            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
             //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
             //                  $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
             //                  $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
@@ -27,7 +27,7 @@ namespace Assignment4Group3
 
             var order = dataService.GetOrderByShippingName("North/South");
             Console.WriteLine($"order id: {order.Id} \n" +
-                              $"order date: {order.DateOrder.Year}-{order.DateOrder.Month}-{order.DateOrder.Day}\n" +
+                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
                               $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
                               $"date required: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
                               $"freight: {order.DateRequired.Year}-{order.DateRequired.Month}-{order.DateRequired.Day}\n" +
@@ -50,13 +50,13 @@ namespace Assignment4Group3
 
 
             //Order details #4
-            //var orderDetail = dataService.GetOrderDetailById(10748);
+            //var orderDetail = dataService.GetOrderDetailsByOrderId(10748);
             //Console.WriteLine($"Order id: {orderDetail[0].OrderId}, Product Name: {orderDetail[0].Product.Name}, Price: {orderDetail[0].UnitPrice}, Quanitity: {orderDetail[0].Quantity}");
 
             //Console.WriteLine("======================================================");
 
             //Order details #5
-            //var orderDetail = dataService.GetOrderDetailByProductId(69);
+            //var orderDetail = dataService.GetOrderDetailsByProductId(69);
 
             //foreach (var x in orderDetail)
             //{
@@ -75,7 +75,7 @@ namespace Assignment4Group3
 
             //Product #7
 
-            var product = dataService.GetProductContainsSubstring("Ch");
+            var product = dataService.GetProductByName("Ch");
             foreach (var x in product)
             {
                 Console.WriteLine($"Product: {x.Name}, Category: {x.Category.Name}");
@@ -85,7 +85,7 @@ namespace Assignment4Group3
 
             Console.WriteLine("======================================================");
 
-            var product2 = dataService.GetProductsByCategoryId(1);
+            var product2 = dataService.GetProductByCategory(1);
             foreach (var x in product2)
             {
                 Console.WriteLine($"ProductId: {x.Id}, " +
@@ -97,7 +97,7 @@ namespace Assignment4Group3
             //Category #9
             // we need to check what happens if ID does not exist
             Console.WriteLine("======================================================");
-            var category = dataService.GetCategoryById(1);
+            var category = dataService.GetCategory(1);
             Console.WriteLine($"Category name: {category.Name}");
 
             //Category 10

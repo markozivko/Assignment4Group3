@@ -29,15 +29,15 @@ namespace Assignment4Group3
             modelBuilder.Entity<Product>().Property(x => x.Name).HasColumnName("productname");
             modelBuilder.Entity<Product>().Property(x => x.CategoryId).HasColumnName("categoryid");
             modelBuilder.Entity<Product>().Property(x => x.SupplierId).HasColumnName("supplierid");
-            modelBuilder.Entity<Product>().Property(x => x.UnitQuantity).HasColumnName("quantityperunit");
+            modelBuilder.Entity<Product>().Property(x => x.QuantityPerUnit).HasColumnName("quantityperunit");
             modelBuilder.Entity<Product>().Property(x => x.UnitPrice).HasColumnName("unitprice");
-            modelBuilder.Entity<Product>().Property(x => x.UnitStock).HasColumnName("unitsinstock");
+            modelBuilder.Entity<Product>().Property(x => x.UnitsInStock).HasColumnName("unitsinstock");
 
             //Order table
             modelBuilder.Entity<Order>().ToTable("orders");
             modelBuilder.Entity<Order>().Property(x => x.Id).HasColumnName("orderid");
-            modelBuilder.Entity<Order>().Property(x => x.DateOrder).HasColumnName("orderdate");
-            modelBuilder.Entity<Order>().Property(x => x.DateRequired).HasColumnName("requireddate");
+            modelBuilder.Entity<Order>().Property(x => x.Date).HasColumnName("orderdate");
+            modelBuilder.Entity<Order>().Property(x => x.Required).HasColumnName("requireddate");
             modelBuilder.Entity<Order>().Property(x => x.DateShipped).HasColumnName("shippeddate");
             modelBuilder.Entity<Order>().Property(x => x.Freight).HasColumnName("freight");
             modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");

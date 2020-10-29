@@ -24,7 +24,7 @@ namespace Assignment4Group3
         }
 
 
-        public Order GetOrderById(int id)
+        public Order GetOrder(int id)
         {
             //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext();
@@ -46,7 +46,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<OrderDetail> GetOrderDetailById(int id)
+        public IList<OrderDetail> GetOrderDetailsByOrderId(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.OrderDetails
@@ -56,7 +56,7 @@ namespace Assignment4Group3
                 
         }
 
-        public IList<OrderDetail> GetOrderDetailByProductId(int id)
+        public IList<OrderDetail> GetOrderDetailsByProductId(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.OrderDetails
@@ -75,7 +75,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<Product> GetProductContainsSubstring(string prodName)
+        public IList<Product> GetProductByName(string prodName)
         {
             using var ctx = new DatabaseContext();
             return ctx.Products
@@ -84,7 +84,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public IList<Product> GetProductsByCategoryId(int id)
+        public IList<Product> GetProductByCategory(int id)
         {
             using var ctx = new DatabaseContext();
             return ctx.Products
