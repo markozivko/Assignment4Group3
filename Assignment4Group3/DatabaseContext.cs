@@ -12,7 +12,7 @@ namespace Assignment4Group3
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=marko");
+            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=root");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
