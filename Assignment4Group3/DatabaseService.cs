@@ -55,17 +55,16 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
-                .FromSqlRaw($"select orderid, productid, unitprice, quantity, discount from orderdetails where orderid = {id}")
+                .Where(o => o.OrderId == id)
                 .Include(x => x.Product)
-                .ToList();
-                
+                .ToList(); 
         }
 
         public IList<OrderDetails> GetOrderDetailsByProductId(int id)
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
-                .FromSqlRaw($"select orderid, productid, unitprice, quantity, discount from orderdetails where productId = {id}")
+                .Where(o => o.ProductId == id)
                 .Include(x => x.Product)
                 .ToList();
         }
@@ -75,11 +74,9 @@ namespace Assignment4Group3
             using var ctx = new DatabaseContext(_connectionString);
 
             return ctx.Products
-               .Where(c => c.Id == id)
+               .Where(p => p.Id == id)
                .Include(x => x.Category)
                .FirstOrDefault();
-                
-
         }
 
         public IList<Product> GetProductByName(string prodName)
@@ -95,8 +92,7 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
-                
-                .FromSqlRaw($"select * from products where categoryId = {id}")
+                .Where(p => p.Id == id)
                 .Include(x => x.Category)
                 .ToList();
         }
@@ -105,7 +101,8 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Categories
-                .FromSqlRaw($"select * from categories where categoryid = {id}").FirstOrDefault();
+                .Where(c => c.Id == id)
+                .FirstOrDefault();
         }
 
         public IList<Category> GetCategories()

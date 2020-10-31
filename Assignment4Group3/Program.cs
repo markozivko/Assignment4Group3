@@ -73,12 +73,12 @@ namespace Assignment4Group3
             //Product #6
             Console.WriteLine("======================================================");
 
-          //  I don't know how to include x.Category -> we are returning single Product and not a list
-            var product = dataService.GetProduct(1);
-            Console.WriteLine(
-                              $"name: {product.Name} " +
-                              $"price: {product.UnitPrice} " +
-                              $"category: {product.Category.Name}");
+            //I don't know how to include x.Category -> we are returning single Product and not a list
+            //var product = dataService.GetProduct(1);
+            //Console.WriteLine(
+            //                  $"name: {product.Name} " +
+            //                  $"price: {product.UnitPrice} " +
+            //                  $"category: {product.Category.Name}");
 
             //Product #7
 
@@ -122,7 +122,7 @@ namespace Assignment4Group3
             //{
             //    Console.WriteLine(el);
             //}
-          
+
         }
     }
 }
