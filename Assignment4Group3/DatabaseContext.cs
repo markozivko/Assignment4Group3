@@ -61,7 +61,7 @@ namespace Assignment4Group3
             modelBuilder.Entity<OrderDetails>().Property(x => x.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetails>().Property(x => x.Discount).HasColumnName("discount");
             modelBuilder.Entity<OrderDetails>().Property(x => x.ProductId).HasColumnName("productid");
-            modelBuilder.Entity<OrderDetails>().HasMany(x => x.Order);
+            //modelBuilder.Entity<OrderDetails>().HasMany(x => x.Order);
         }
     }
 }
