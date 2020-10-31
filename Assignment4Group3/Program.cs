@@ -16,15 +16,15 @@ namespace Assignment4Group3
             using var context = new DatabaseContext(config["connectionString"]);
             var dataService = new DataService(config["connectionString"]);
 
-           // Order #1
-            var order = dataService.GetOrder(10500);
-            Console.WriteLine($"order id: {order.Id} \n" +
-                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
-                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-                              $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-                              $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-                              $"ship name: {order.ShipName} \n" +
-                              $"ship city: {order.ShipCity} \n");
+            // Order #1
+            //var order = dataService.GetOrder(10500);
+            //Console.WriteLine($"order id: {order.Id} \n" +
+            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
+            //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+            //                  $"ship name: {order.ShipName} \n" +
+            //                  $"ship city: {order.ShipCity} \n");
 
             //Console.WriteLine("======================================================");
 
@@ -71,14 +71,14 @@ namespace Assignment4Group3
             //}
 
             //Product #6
-            //Console.WriteLine("======================================================");
+            Console.WriteLine("======================================================");
 
-            // I don't know how to include x.Category -> we are returning single Product and not a list
-            //var product = dataService.GetProduct(1);
-            //Console.WriteLine(
-            //                  $"name: {product.Name} " +
-            //                  $"price: {product.UnitPrice} " +
-            //                  $"category: {product.Category.Name}");
+          //  I don't know how to include x.Category -> we are returning single Product and not a list
+            var product = dataService.GetProduct(1);
+            Console.WriteLine(
+                              $"name: {product.Name} " +
+                              $"price: {product.UnitPrice} " +
+                              $"category: {product.Category.Name}");
 
             //Product #7
 
@@ -115,6 +115,14 @@ namespace Assignment4Group3
             //{
             //    Console.WriteLine($"Id: {x.Id} Name: {x.Name} Description: {x.Description} ");
             //}
+
+            //Question 11
+            //dataService.RemoveCategory(9) ;
+            //foreach(var el in dataService.GetCategories())
+            //{
+            //    Console.WriteLine(el);
+            //}
+          
         }
     }
 }

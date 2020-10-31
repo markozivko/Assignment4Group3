@@ -73,10 +73,12 @@ namespace Assignment4Group3
         public Product GetProduct(int id)
         {
             using var ctx = new DatabaseContext(_connectionString);
+
             return ctx.Products
-                .FromSqlRaw($"select * from products where productid = {id}").FirstOrDefault();
-                // I don't know how to include x.Category is I am returning single Product and not a list
-                //.Include(x => x.Category);
+               .Where(c => c.Id == id)
+               .Include(x => x.Category)
+               .FirstOrDefault();
+                
 
         }
 
@@ -93,6 +95,7 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
+                
                 .FromSqlRaw($"select * from products where categoryId = {id}")
                 .Include(x => x.Category)
                 .ToList();
