@@ -94,8 +94,9 @@ namespace Assignment4Group3
         public IList<Product> GetProductByCategory(int id)
         {
             using var ctx = new DatabaseContext(_connectionString);
+            
             return ctx.Products
-                .Where(p => p.ProductId == id)
+                .Where(p => p.CategoryId == id)
                 .Include(x => x.Category)
                 .ToList();
         }
@@ -120,7 +121,7 @@ namespace Assignment4Group3
             var currentId = ctx.Categories.Max(x => x.Id);
             ctx.Categories.Add(new Category {Id = currentId +1, Name = name, Description = description  });
             ctx.SaveChanges();
-            return GetCategory(currentId);
+            return GetCategory(currentId + 1);
         }
 
         public bool UpdateCategory(int id, string name, string description)
@@ -132,6 +133,7 @@ namespace Assignment4Group3
                 category.Name = name;
                 category.Description = description;
                 ctx.SaveChanges();
+                return true;
             }
             return false;
         }

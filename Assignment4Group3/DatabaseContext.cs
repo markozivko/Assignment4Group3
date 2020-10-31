@@ -52,6 +52,7 @@ namespace Assignment4Group3
             modelBuilder.Entity<Order>().Property(x => x.Freight).HasColumnName("freight");
             modelBuilder.Entity<Order>().Property(x => x.ShipName).HasColumnName("shipname");
             modelBuilder.Entity<Order>().Property(x => x.ShipCity).HasColumnName("shipcity");
+            //modelBuilder.Entity<Order>().HasMany(x => x.OrderDetails).WithOne
 
             //Order Details table
             modelBuilder.Entity<OrderDetails>().ToTable("orderdetails");
@@ -60,7 +61,7 @@ namespace Assignment4Group3
             modelBuilder.Entity<OrderDetails>().Property(x => x.Quantity).HasColumnName("quantity");
             modelBuilder.Entity<OrderDetails>().Property(x => x.Discount).HasColumnName("discount");
             modelBuilder.Entity<OrderDetails>().Property(x => x.ProductId).HasColumnName("productid");
-
+            modelBuilder.Entity<OrderDetails>().HasMany(x => x.Order);
         }
     }
 }
