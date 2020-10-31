@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4Group3", "Assign
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment4Test", "Assignment4Test\Assignment4Test.csproj", "{2E159A92-F51B-457A-AC08-A257935D5B41}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "..\WebService\WebService\WebService.csproj", "{E72842CB-50D0-44F7-B9DC-89DB7C6985DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{2E159A92-F51B-457A-AC08-A257935D5B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E159A92-F51B-457A-AC08-A257935D5B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E159A92-F51B-457A-AC08-A257935D5B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72842CB-50D0-44F7-B9DC-89DB7C6985DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72842CB-50D0-44F7-B9DC-89DB7C6985DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72842CB-50D0-44F7-B9DC-89DB7C6985DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72842CB-50D0-44F7-B9DC-89DB7C6985DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
