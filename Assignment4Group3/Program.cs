@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Assignment4Group3
 {
@@ -6,19 +8,23 @@ namespace Assignment4Group3
     {
         static void Main(string[] args)
         {
+            //secure the databas elogin by creating a json file with the user id and pwd
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("config.json")
+                .Build();
+         
+            using var context = new DatabaseContext(config["connectionString"]);
+            var dataService = new DataService(config["connectionString"]);
 
-            using var context = new DatabaseContext();
-            var dataService = new DataService();
-
-            //Order #1
-            //var order = dataService.GetOrder(10500);
-            //Console.WriteLine($"order id: {order.Id} \n" +
-            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
-            //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"ship name: {order.ShipName} \n" +
-            //                  $"ship city: {order.ShipCity} \n");
+           // Order #1
+            var order = dataService.GetOrder(10500);
+            Console.WriteLine($"order id: {order.Id} \n" +
+                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
+                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+                              $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"ship name: {order.ShipName} \n" +
+                              $"ship city: {order.ShipCity} \n");
 
             //Console.WriteLine("======================================================");
 

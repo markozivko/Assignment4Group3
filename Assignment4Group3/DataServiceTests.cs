@@ -2,13 +2,21 @@ using Assignment4Group3;
 using System;
 using System.Linq;
 using Xunit;
+using Microsoft.Extensions.Configuration;
 
 namespace Assignment4.Tests
 {
     public class DataServiceTests
     {
         /* Categories */
-
+        private readonly string _connectionString;
+        public DataServiceTests()
+        {
+            var config = new ConfigurationBuilder()
+                .AddJsonFile("config.json")
+                .Build();
+            _connectionString = config["connectionString"];
+        }
         [Fact]
         public void Category_Object_HasIdNameAndDescription()
         {
@@ -21,7 +29,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetAllCategories_NoArgument_ReturnsAllCategories()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var categories = service.GetCategories();
             Assert.Equal(8, categories.Count);
             Assert.Equal("Beverages", categories.First().Name);
@@ -30,7 +38,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetCategory_ValidId_ReturnsCategoryObject()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var category = service.GetCategory(1);
             Assert.Equal("Beverages", category.Name);
         }
@@ -110,7 +118,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetProduct_ValidId_ReturnsProductWithCategory()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var product = service.GetProduct(1);
             Assert.Equal("Chai", product.Name);
             Assert.Equal("Beverages", product.Category.Name);
@@ -119,7 +127,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetProductsByCategory_ValidId_ReturnsProductWithCategory()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var products = service.GetProductByCategory(1);
             Assert.Equal(12, products.Count);
             Assert.Equal("Chai", products.First().Name);
@@ -134,7 +142,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetProduct_NameSubString_ReturnsProductsThatMachesTheSubString()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var products = service.GetProductByName("em");
             Assert.Equal(4, products.Count);
             //Assert.Equal("NuNuCa Nu?-Nougat-Creme", products.First().ProductName);
@@ -161,7 +169,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrder_ValidId_ReturnsCompleteOrder()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var order = service.GetOrder(10248);
             //Assert.Equal(3, order.OrderDetails.Count);
             //Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.Name);
@@ -171,7 +179,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrders()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var orders = service.GetOrders();
             Assert.Equal(830, orders.Count);
         }
@@ -194,7 +202,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrderDetailByOrderId_ValidId_ReturnsProductNameUnitPriceAndQuantity()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var orderDetails = service.GetOrderDetailsByOrderId(10248);
             Assert.Equal(3, orderDetails.Count);
             Assert.Equal("Queso Cabrales", orderDetails.First().Product.Name);
@@ -205,7 +213,7 @@ namespace Assignment4.Tests
         [Fact]
         public void GetOrderDetailByProductId_ValidId_ReturnsOrderDateUnitPriceAndQuantity()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var orderDetails = service.GetOrderDetailsByProductId(11);
             Assert.Equal(38, orderDetails.Count);
             //Assert.Equal("1997-05-06", orderDetails.First().Order.Date.ToString("yyyy-MM-dd"));

@@ -7,9 +7,14 @@ namespace Assignment4Group3
     public class DataService
     {
 
+        private readonly string _connectionString;
+        public DataService(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
         public IList<Product> GetProducts()
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
                 .Include(x => x.Category)
                 .ToList();
@@ -17,7 +22,7 @@ namespace Assignment4Group3
 
         public IList<OrderDetails> OrderDetails()
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
                 .Include(x => x.Product)
                 .ToList();
@@ -27,28 +32,28 @@ namespace Assignment4Group3
         public Order GetOrder(int id)
         {
             //missing natural join with order details in order to show all data
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
                 .FromSqlRaw($"select * from orders where orderid = {id}").FirstOrDefault();
         }
 
         public Order GetOrderByShippingName(string shippingName)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
                 .FromSqlRaw($"select * from orders where shipname like \'%{shippingName}\'").FirstOrDefault();
         }
 
         public IList<Order> GetOrders()
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
                 .ToList();
         }
 
         public IList<OrderDetails> GetOrderDetailsByOrderId(int id)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
                 .FromSqlRaw($"select orderid, productid, unitprice, quantity, discount from orderdetails where orderid = {id}")
                 .Include(x => x.Product)
@@ -58,7 +63,7 @@ namespace Assignment4Group3
 
         public IList<OrderDetails> GetOrderDetailsByProductId(int id)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
                 .FromSqlRaw($"select orderid, productid, unitprice, quantity, discount from orderdetails where productId = {id}")
                 .Include(x => x.Product)
@@ -67,7 +72,7 @@ namespace Assignment4Group3
 
         public Product GetProduct(int id)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
                 .FromSqlRaw($"select * from products where productid = {id}").FirstOrDefault();
                 // I don't know how to include x.Category is I am returning single Product and not a list
@@ -77,7 +82,7 @@ namespace Assignment4Group3
 
         public IList<Product> GetProductByName(string prodName)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
                 .FromSqlRaw($"select * from products where productname like \'%{prodName}%\'")
                 .Include(x => x.Category)
@@ -86,7 +91,7 @@ namespace Assignment4Group3
 
         public IList<Product> GetProductByCategory(int id)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
                 .FromSqlRaw($"select * from products where categoryId = {id}")
                 .Include(x => x.Category)
@@ -95,16 +100,50 @@ namespace Assignment4Group3
 
         public Category GetCategory(int id)
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Categories
                 .FromSqlRaw($"select * from categories where categoryid = {id}").FirstOrDefault();
         }
 
         public IList<Category> GetCategories()
         {
-            using var ctx = new DatabaseContext();
+            using var ctx = new DatabaseContext(_connectionString);
             return ctx.Categories
                 .ToList();
+        }
+        public void AddCategory(string name, string description) 
+        {
+            using var ctx = new DatabaseContext(_connectionString);
+            var currentId = ctx.Categories.Max(x => x.Id);
+            ctx.Categories.Add(new Category {Id = currentId +1, Name = name, Description = description  });
+            ctx.SaveChanges();
+        }
+
+        public bool UpdateCategory(int id, string name, string description)
+        {
+            using var ctx = new DatabaseContext(_connectionString);
+            var category = ctx.Categories.Find(id);
+            if (category != null)
+            {
+                category.Name = name;
+                category.Description = description;
+                ctx.SaveChanges();
+            }
+            return false;
+        }
+
+        public bool RemoveCategory(int id)
+        {
+            using var ctx = new DatabaseContext(_connectionString);
+            var category = ctx.Categories.Find(id);
+            if(category!= null)
+            {
+                ctx.Categories.Remove(category);
+                ctx.SaveChanges();
+                return true;
+            }
+            return false;
+            
         }
     }
 }

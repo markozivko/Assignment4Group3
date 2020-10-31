@@ -1,10 +1,19 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+
 namespace Assignment4Group3
 {
     public class DatabaseContext : DbContext
     {
-
+        private readonly string _connectionString;
+        public DatabaseContext(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+        // Log into the console all the queries
+        public static readonly ILoggerFactory MyLoggerFactory 
+            = LoggerFactory.Create(builder => { builder.AddConsole(); });
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -12,7 +21,8 @@ namespace Assignment4Group3
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("host=localhost;db=northwind;uid=postgres;pwd=marko");
+            optionsBuilder.UseLoggerFactory(MyLoggerFactory);
+            optionsBuilder.UseNpgsql(_connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
