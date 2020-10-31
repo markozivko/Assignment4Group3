@@ -17,14 +17,14 @@ namespace Assignment4Group3
             var dataService = new DataService(config["connectionString"]);
 
             // Order #1
-            //var order = dataService.GetOrder(10500);
-            //Console.WriteLine($"order id: {order.Id} \n" +
-            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
-            //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"ship name: {order.ShipName} \n" +
-            //                  $"ship city: {order.ShipCity} \n");
+            var order = dataService.GetOrder(10500);
+            Console.WriteLine($"order id: {order.Id} \n" +
+                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
+                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+                              $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"ship name: {order.ShipName} \n" +
+                              $"ship city: {order.ShipCity} \n");
 
             //Console.WriteLine("======================================================");
 

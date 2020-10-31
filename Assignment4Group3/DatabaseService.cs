@@ -28,13 +28,14 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-
         public Order GetOrder(int id)
         {
             //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
-                .FromSqlRaw($"select * from orders where orderid = {id}").FirstOrDefault();
+                .Where(o => o.Id == id)
+                .FirstOrDefault();
+                //.FromSqlRaw($"select * from orders where orderid = {id}").FirstOrDefault();
         }
 
         public Order GetOrderByShippingName(string shippingName)
