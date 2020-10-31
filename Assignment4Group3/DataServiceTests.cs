@@ -43,10 +43,10 @@ namespace Assignment4.Tests
             Assert.Equal("Beverages", category.Name);
         }
 
-        /* [Fact]
+        [Fact]
         public void CreateCategory_ValidData_CreteCategoryAndRetunsNewObject()
          {
-             var service = new DataService();
+             var service = new DataService(_connectionString);
              var category = service.CreateCategory("Test", "CreateCategory_ValidData_CreteCategoryAndRetunsNewObject");
              Assert.True(category.Id > 0);
              Assert.Equal("Test", category.Name);
@@ -54,31 +54,31 @@ namespace Assignment4.Tests
 
              // cleanup
              service.DeleteCategory(category.Id);
-         }*/
+         }
 
-        /*[Fact]
+       [Fact]
         public void DeleteCategory_ValidId_RemoveTheCategory()
         {
-            var service = new DataService();
+            var service = new DataService(_connectionString);
             var category = service.CreateCategory("Test", "DeleteCategory_ValidId_RemoveTheCategory");
             var result = service.DeleteCategory(category.Id);
             Assert.True(result);
             category = service.GetCategory(category.Id);
             Assert.Null(category);
-        }*/
+        }
 
-        /*[Fact]
+        [Fact]
         public void DeleteCategory_InvalidId_ReturnsFalse()
          {
-             var service = new DataService();
+             var service = new DataService(_connectionString);
              var result = service.DeleteCategory(-1);
              Assert.False(result);
-         }*/
+         }
 
-        /*[Fact]
+        [Fact]
       public void UpdateCategory_NewNameAndDescription_UpdateWithNewValues()
        {
-           var service = new DataService();
+           var service = new DataService(_connectionString);
            var category = service.CreateCategory("TestingUpdate", "UpdateCategory_NewNameAndDescription_UpdateWithNewValues");
 
            var result = service.UpdateCategory(category.Id, "UpdatedName", "UpdatedDescription");
@@ -91,7 +91,7 @@ namespace Assignment4.Tests
 
            // cleanup
            service.DeleteCategory(category.Id);
-       }*/
+       }
 
         /* [Fact]
         public void UpdateCategory_InvalidID_ReturnsFalse()
@@ -108,8 +108,8 @@ namespace Assignment4.Tests
         public void Product_Object_HasIdNameUnitPriceQuantityPerUnitAndUnitsInStock()
         {
             var product = new Product();
-            Assert.Equal(0, product.Id);
-            Assert.Null(product.Name);
+            Assert.Equal(0, product.ProductId);
+            Assert.Null(product.ProductName);
             Assert.Equal(0.0, product.UnitPrice);
             Assert.Null(product.QuantityPerUnit);
             Assert.Equal(0, product.UnitsInStock);
@@ -120,7 +120,7 @@ namespace Assignment4.Tests
         {
             var service = new DataService(_connectionString);
             var product = service.GetProduct(1);
-            Assert.Equal("Chai", product.Name);
+            Assert.Equal("Chai", product.ProductName);
             Assert.Equal("Beverages", product.Category.Name);
         }
 
@@ -130,13 +130,13 @@ namespace Assignment4.Tests
             var service = new DataService(_connectionString);
             var products = service.GetProductByCategory(1);
             Assert.Equal(12, products.Count);
-            Assert.Equal("Chai", products.First().Name);
+            Assert.Equal("Chai", products.First().ProductName);
             // Assert.Equal("Beverages", products.First().CategoryName);
 
             //Why is it not written as Category.Name?
             Assert.Equal("Beverages", products.First().Category.Name);
 
-            Assert.Equal("Lakkalik??ri", products.Last().Name);
+            Assert.Equal("Lakkalik??ri", products.Last().ProductName);
         }
 
         [Fact]
@@ -145,12 +145,12 @@ namespace Assignment4.Tests
             var service = new DataService(_connectionString);
             var products = service.GetProductByName("em");
             Assert.Equal(4, products.Count);
-            //Assert.Equal("NuNuCa Nu?-Nougat-Creme", products.First().ProductName);
-            //Assert.Equal("Flotemysost", products.Last().ProductName);
+            Assert.Equal("NuNuCa Nu?-Nougat-Creme", products.First().ProductName);
+            Assert.Equal("Flotemysost", products.Last().ProductName);
 
             //shouldn't it be retreived like this:
-            Assert.Equal("NuNuCa Nu?-Nougat-Creme", products.First().Name);
-            Assert.Equal("Flotemysost", products.Last().Name);
+            Assert.Equal("NuNuCa Nu?-Nougat-Creme", products.First().ProductName);
+            Assert.Equal("Flotemysost", products.Last().ProductName);
         }
 
         /* orders */
@@ -161,7 +161,7 @@ namespace Assignment4.Tests
             Assert.Equal(0, order.Id);
             Assert.Equal(new DateTime(), order.Date);
             Assert.Equal(new DateTime(), order.Required);
-            //Assert.Null(order.OrderDetails);
+            Assert.Null(order.OrderDetails);
             Assert.Null(order.ShipName);
             Assert.Null(order.ShipCity);
         }
@@ -171,9 +171,9 @@ namespace Assignment4.Tests
         {
             var service = new DataService(_connectionString);
             var order = service.GetOrder(10248);
-            //Assert.Equal(3, order.OrderDetails.Count);
-            //Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.Name);
-            //Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
+            Assert.Equal(3, order.OrderDetails.Count);
+            Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.ProductName);
+            Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
         }
 
         [Fact]
@@ -191,7 +191,7 @@ namespace Assignment4.Tests
         {
             var orderDetails = new OrderDetails();
             Assert.Equal(0, orderDetails.OrderId);
-            //Assert.Null(orderDetails.Order);
+            Assert.Null(orderDetails.Order);
             Assert.Equal(0, orderDetails.ProductId);
             Assert.Null(orderDetails.Product);
             Assert.Equal(0.0, orderDetails.UnitPrice);
@@ -205,7 +205,7 @@ namespace Assignment4.Tests
             var service = new DataService(_connectionString);
             var orderDetails = service.GetOrderDetailsByOrderId(10248);
             Assert.Equal(3, orderDetails.Count);
-            Assert.Equal("Queso Cabrales", orderDetails.First().Product.Name);
+            Assert.Equal("Queso Cabrales", orderDetails.First().Product.ProductName);
             Assert.Equal(14, orderDetails.First().UnitPrice);
             Assert.Equal(12, orderDetails.First().Quantity);
         }

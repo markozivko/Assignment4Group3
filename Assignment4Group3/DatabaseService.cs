@@ -28,6 +28,8 @@ namespace Assignment4Group3
                 .ToList();
         }
 
+       
+
         public Order GetOrder(int id)
         {
             //missing natural join with order details in order to show all data
@@ -75,7 +77,7 @@ namespace Assignment4Group3
             using var ctx = new DatabaseContext(_connectionString);
 
             return ctx.Products
-               .Where(p => p.Id == id)
+               .Where(p => p.ProductId == id)
                .Include(x => x.Category)
                .FirstOrDefault();
         }
@@ -93,7 +95,7 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Products
-                .Where(p => p.Id == id)
+                .Where(p => p.ProductId == id)
                 .Include(x => x.Category)
                 .ToList();
         }
@@ -112,12 +114,13 @@ namespace Assignment4Group3
             return ctx.Categories
                 .ToList();
         }
-        public void AddCategory(string name, string description) 
+        public Category CreateCategory(string name, string description) 
         {
             using var ctx = new DatabaseContext(_connectionString);
             var currentId = ctx.Categories.Max(x => x.Id);
             ctx.Categories.Add(new Category {Id = currentId +1, Name = name, Description = description  });
             ctx.SaveChanges();
+            return GetCategory(currentId);
         }
 
         public bool UpdateCategory(int id, string name, string description)
@@ -133,7 +136,7 @@ namespace Assignment4Group3
             return false;
         }
 
-        public bool RemoveCategory(int id)
+        public bool DeleteCategory(int id)
         {
             using var ctx = new DatabaseContext(_connectionString);
             var category = ctx.Categories.Find(id);

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace Assignment4Group3
 {
     public class Order
@@ -10,7 +13,7 @@ namespace Assignment4Group3
         public int Freight { get; set; }
         public string ShipName { get; set; }
         public string ShipCity { get; set; }
-        //public OrderDetails[] OrderDetails { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
 
         public override string ToString()
         {
@@ -20,8 +23,8 @@ namespace Assignment4Group3
                    $"date required: {Required.Year}-{Required.Month}-{Required.Day} " +
                    $"freight: {Required.Year}-{Required.Month}-{Required.Day} " +
                    $"ship name: {ShipName} " +
-                   $"ship city: {ShipCity} ";
-                   //order details: {OrderDetails[0].OrderId}";
+                   $"ship city: {ShipCity} " +
+                   $"order details: {OrderDetails}";
         }
     }
 }

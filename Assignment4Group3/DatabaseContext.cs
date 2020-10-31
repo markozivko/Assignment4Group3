@@ -35,8 +35,8 @@ namespace Assignment4Group3
 
             //Products table
             modelBuilder.Entity<Product>().ToTable("products");
-            modelBuilder.Entity<Product>().Property(x => x.Id).HasColumnName("productid");
-            modelBuilder.Entity<Product>().Property(x => x.Name).HasColumnName("productname");
+            modelBuilder.Entity<Product>().Property(x => x.ProductId).HasColumnName("productid");
+            modelBuilder.Entity<Product>().Property(x => x.ProductName).HasColumnName("productname");
             modelBuilder.Entity<Product>().Property(x => x.CategoryId).HasColumnName("categoryid");
             modelBuilder.Entity<Product>().Property(x => x.SupplierId).HasColumnName("supplierid");
             modelBuilder.Entity<Product>().Property(x => x.QuantityPerUnit).HasColumnName("quantityperunit");

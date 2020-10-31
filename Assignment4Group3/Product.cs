@@ -4,8 +4,8 @@ namespace Assignment4Group3
     public class Product
     {
 
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
         public int SupplierId { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
@@ -15,7 +15,7 @@ namespace Assignment4Group3
 
         public override string ToString()
         {
-            return $"Id: {Id}, Name: {Name}, Category: {Category.Name}";
+            return $"Id: {ProductId}, Name: {ProductName}, Category: {Category.Name}";
         }
     }
 }
