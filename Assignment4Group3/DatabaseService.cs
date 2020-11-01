@@ -62,9 +62,6 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
-                .Include(o => o.OrderDetails)
-               .ThenInclude(x => x.Product)
-               .ThenInclude(x => x.Category)
                 .ToList();
         }
 

@@ -49,11 +49,13 @@ namespace Assignment4Group3
             //Order #3
 
             //partially working
-            //returns list of all orders but also throws an exception that there is an EMPTY calumn somewhere
-            //foreach (var order3 in context.Orders)
-            //{
-            //    Console.WriteLine(order3);
-            //}
+            // returns list of all orders but also throws an exception that there is an EMPTY calumn somewhere
+
+            var orders = dataService.GetOrders();
+            foreach (var x in orders)
+            {
+                Console.WriteLine($"Id: {x.Id} Date: {x.Date} Ship: {x.DateShipped} Required: { x.Required } Freight: {x.Freight} ShipName { x.ShipName } ShipCity { x.ShipCity } ");
+            }
 
             //Console.WriteLine("======================================================");
 
