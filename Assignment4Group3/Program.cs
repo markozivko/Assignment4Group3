@@ -1,6 +1,6 @@
-﻿using Assignment4.Tests;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using Xunit;
 
@@ -19,14 +19,15 @@ namespace Assignment4Group3
             var dataService = new DataService(config["connectionString"]);
 
             // Order #1
-            //var order = dataService.GetOrder(10500);
-            //Console.WriteLine($"order id: {order.Id} \n" +
-            //                  $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
-            //                  $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
-            //                  $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
-            //                  $"ship name: {order.ShipName} \n" +
-            //                  $"ship city: {order.ShipCity} \n");
+            var order = dataService.GetOrder(10500);
+            Console.WriteLine($"order id: {order.Id} \n" +
+                              $"order date: {order.Date.Year}-{order.Date.Month}-{order.Date.Day}\n" +
+                              $"date shipped: {order.DateShipped.Year}-{order.DateShipped.Month}-{order.DateShipped.Day}\n" +
+                              $"date required: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"freight: {order.Required.Year}-{order.Required.Month}-{order.Required.Day}\n" +
+                              $"ship name: {order.ShipName} \n" +
+                              $"ship city: {order.ShipCity} \n" +
+                              $"order details: {order.OrderDetails.First()}");
 
             //Console.WriteLine("======================================================");
 
@@ -78,17 +79,17 @@ namespace Assignment4Group3
             //I don't know how to include x.Category -> we are returning single Product and not a list
             //var product = dataService.GetProduct(1);
             //Console.WriteLine(
-            //                  $"name: {product.Name} " +
+            //                  $"name: {product.ProductName} " +
             //                  $"price: {product.UnitPrice} " +
             //                  $"category: {product.Category.Name}");
 
-            //Product #7
+            ////Product #7
 
-            var product = dataService.GetProductByName("em");
-            foreach (var x in product)
-            {
-                Console.WriteLine($"Product: {x.ProductName}, Category: {x.Category.Name}");
-            }
+            //var product = dataService.GetProductByName("em");
+            //foreach (var x in product)
+            //{
+            //    Console.WriteLine($"Product: {x.ProductName}, Category: {x.Category.Name}");
+            //}
 
             //Product #8
 

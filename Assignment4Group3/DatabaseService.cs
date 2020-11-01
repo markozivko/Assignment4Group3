@@ -19,7 +19,15 @@ namespace Assignment4Group3
                 .Include(x => x.Category)
                 .ToList();
         }
+        public Product GetProduct(int id)
+        {
+            using var ctx = new DatabaseContext(_connectionString);
 
+            return ctx.Products
+               .Where(p => p.ProductId == id)
+               .Include(x => x.Category)
+               .FirstOrDefault();
+        }
         public IList<OrderDetails> OrderDetails()
         {
             using var ctx = new DatabaseContext(_connectionString);
@@ -35,9 +43,10 @@ namespace Assignment4Group3
             //missing natural join with order details in order to show all data
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.Orders
-                .Where(o => o.Id == id)
-                .FirstOrDefault();
-                //.FromSqlRaw($"select * from orders where orderid = {id}").FirstOrDefault();
+               .Include(o => o.OrderDetails)
+               .Where(o => o.Id == id)
+               .FirstOrDefault();
+            
         }
 
         public Order GetOrderByShippingName(string shippingName)
@@ -72,15 +81,7 @@ namespace Assignment4Group3
                 .ToList();
         }
 
-        public Product GetProduct(int id)
-        {
-            using var ctx = new DatabaseContext(_connectionString);
 
-            return ctx.Products
-               .Where(p => p.ProductId == id)
-               .Include(x => x.Category)
-               .FirstOrDefault();
-        }
 
         public IList<Product> GetProductByName(string prodName)
         {

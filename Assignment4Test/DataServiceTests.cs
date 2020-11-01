@@ -164,7 +164,7 @@ namespace Assignment4Tests
             Assert.Equal(0, order.Id);
             Assert.Equal(new DateTime(), order.Date);
             Assert.Equal(new DateTime(), order.Required);
-            //Assert.Null(order.OrderDetails);
+            Assert.Null(order.OrderDetails);
             Assert.Null(order.ShipName);
             Assert.Null(order.ShipCity);
         }
