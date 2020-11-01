@@ -174,18 +174,18 @@ namespace Assignment4Tests
         {
             var service = new DataService(_connectionString);
             var order = service.GetOrder(10248);
-           // Assert.Equal(3, order.OrderDetails.Count);
-            //Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.ProductName);
-            //Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
+           Assert.Equal(3, order.OrderDetails.Count);
+            Assert.Equal("Queso Cabrales", order.OrderDetails.First().Product.ProductName);
+            Assert.Equal("Dairy Products", order.OrderDetails.First().Product.Category.Name);
         }
 
-        //[Fact]
-        //public void GetOrders()
-        //{
-        //    var service = new DataService(_connectionString);
-        //    var orders = service.GetOrders();
-        //    Assert.Equal(830, orders.Count);
-        //}
+        [Fact]
+        public void GetOrders()
+        {
+            var service = new DataService(_connectionString);
+            var orders = service.GetOrders();
+            Assert.Equal(830, orders.Count);
+        }
 
 
         ///* orderdetails */
