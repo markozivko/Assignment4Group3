@@ -13,7 +13,7 @@ namespace WebService.Controllers
 
         public CategoriesController()
         {
-            var config = new ConfigurationBuilder()
+             var config = new ConfigurationBuilder()
             .AddJsonFile("config.json")
             .Build();
             _connectionString = config["connectionString"];
