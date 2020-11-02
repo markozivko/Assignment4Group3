@@ -78,8 +78,9 @@ namespace Assignment4Group3
         {
             using var ctx = new DatabaseContext(_connectionString);
             return ctx.OrderDetails
-                .Where(o => o.ProductId == id)
+                .Include(x => x.Order)
                 .Include(x => x.Product)
+                .Where(o => o.ProductId == id)
                 .ToList();
         }
 

@@ -8,7 +8,7 @@ namespace Assignment4Group3
     {
      
         public int ProductId { get; set; }
-       
+          
         public int OrderId { get; set; }
      
         public int Quantity { get; set; }
@@ -16,7 +16,7 @@ namespace Assignment4Group3
 
         public int UnitPrice { get; set; }
         public Product Product { get; set; }
-       // public ICollection<Order> Orders { get; set; }
+        public Order Order { get; set; }
         public override string ToString()
         {
             return $"Id: {OrderId}, quantity: {Quantity}, unitprice : {UnitPrice}, discount: {Discount}";
