@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 namespace Assignment4Group3
 {
     public class Product

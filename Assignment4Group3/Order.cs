@@ -7,10 +7,9 @@ namespace Assignment4Group3
     public class Order
     {
         public int Id { get; set; }
-        
-        public DateTime Date { get; set; }
-        public DateTime DateShipped { get; set; }
-        public DateTime Required { get; set; }
+        public DateTime? Date { get; set; }
+        public DateTime? DateShipped { get; set; }
+        public DateTime? Required { get; set; }
         public int Freight { get; set; }
         public string ShipName { get; set; }
         public string ShipCity { get; set; }
@@ -20,13 +19,13 @@ namespace Assignment4Group3
         public override string ToString()
         {
             return $"Order id: {Id} " +
-                   $"on date: {Date.Year}-{Date.Month}-{Date.Day}" +
-                   $"date shipped: {DateShipped.Year}-{DateShipped.Month}-{DateShipped.Day} " +
-                   $"date required: {Required.Year}-{Required.Month}-{Required.Day} " +
-                   $"freight: {Required.Year}-{Required.Month}-{Required.Day} " +
+                   $"on date: {Date.Value.Year}-{Date.Value.Month}-{Date.Value.Day}" +
+                   $"date shipped: {DateShipped.Value.Year}-{DateShipped.Value.Month}-{DateShipped.Value.Day} " +
+                   $"date required: {Required.Value.Year}-{Required.Value.Month}-{Required.Value.Day} " +
+                   $"freight: {Freight}" +
                    $"ship name: {ShipName} " +
-                   $"ship city: {ShipCity} ";
-                  //$"order details: {OrderDetails.First()}";
+                   $"ship city: {ShipCity} "+
+                  $"order details: {OrderDetails.First()}";
         }
     }
 }

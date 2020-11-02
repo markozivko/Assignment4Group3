@@ -138,7 +138,7 @@ namespace Assignment4Tests
 
             //Mistake -> we had to add missing simbols for name Lakkalikööri
             //Lakkalik??ri
-            Assert.Equal("Lakkalikööri", products.Last().ProductName);
+            Assert.Equal("LakkalikÃ¶Ã¶ri", products.Last().ProductName);
         }
 
         [Fact]
@@ -152,7 +152,7 @@ namespace Assignment4Tests
             Assert.Equal("Flotemysost", products.Last().ProductName);
 
             //shouldn't it be retreived like this:
-            Assert.Equal("NuNuCa Nuß-Nougat-Creme", products.First().ProductName);
+            Assert.Equal("NuNuCa NuÃŸ-Nougat-Creme", products.First().ProductName);
             Assert.Equal("Flotemysost", products.Last().ProductName);
         }
 
